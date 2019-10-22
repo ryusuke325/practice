@@ -1,0 +1,23 @@
+# C-Makefile for Abisko
+#
+# Assumes that you have run:
+# $ module add openmpi/gcc
+#
+CC     = mpicc
+CFLAGS = -O3
+LIBS =
+
+# Define the application object files and target name
+#   APPOBJ = list of required object files
+#   APP    = name of target executable
+
+APPOBJ = pingpong.o
+APP = pingpong
+
+$(APP): $(APPOBJ)
+	$(CC) $(CFLAGS) -o $(APP) $(APPOBJ) $(LIBS)
+
+.PHONY: .
+clean:
+	/bin/rm -f $(APP) $(APPOBJ)
+
